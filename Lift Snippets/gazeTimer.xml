@@ -1,0 +1,31 @@
+//method of PatronFunctions.cs
+//determines length of time a player chooses to look at a speaking patron
+IEnumerator gazeTimer(float timeToGaze)
+    {
+        gazeTrigger = false;
+        acLength = GetComponent<AudioSource>().clip.length;
+        currentAcTime = 0f;
+        Vector3 fwd = playerHead.transform.TransformDirection(Vector3.forward * 10);
+        RaycastHit hit;
+        //Debug.DrawRay(playerHead.transform.position, fwd, Color.green);
+        while (true)
+        {
+            //Debug.DrawRay(playerHead.transform.position, fwd, Color.green);
+            if (Physics.Raycast(playerHead.transform.position, playerHead.transform.forward, out hit, Mathf.Infinity, layerMask))
+            {
+                //Debug.Log("raycast hit: " + hit.transform.name);
+                if (currentGazeTime < timeToGaze)
+                {
+                    currentGazeTime+=Time.deltaTime;
+                } 
+                else 
+                {
+                    gazeTrigger = true;
+                    currentGazeTime = 0;
+                    yield break;
+                }
+            }
+            currentAcTime+=Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+    }

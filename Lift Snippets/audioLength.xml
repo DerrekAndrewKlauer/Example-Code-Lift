@@ -1,0 +1,10 @@
+//method of PatronFunctions.cs
+//FSM helper function
+//updates playmaker float audiolength with current spoken dialogue length
+public void currentAudio()
+{
+    this.gameObject.transform.GetChild(0).transform.Find("Head").GetComponent<AudioSource>().Play();
+    AudioVar = FsmVariables.GlobalVariables.FindFsmFloat("audioLength");
+    AudioVar.Value = this.gameObject.transform.GetChild(0).transform.Find("Head").GetComponent<AudioSource>().clip.length;
+    return;
+}

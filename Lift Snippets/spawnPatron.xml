@@ -1,0 +1,15 @@
+//method of PatronSpawner.cs
+//instantiates a new patron based on the current iteration of patronList
+//parents the new patron to their current floor
+protected void spawnPatron()
+    {
+        if (readyToSpawn)
+        {
+            currentPatron = patronList[currentInteraction];
+            GameObject patronClone = (GameObject)Instantiate(Resources.Load("Patrons/" + currentPatron));
+            patronClone.transform.parent = fM.getReference(targetFloors[currentInteraction]).transform;
+            //Debug.Log("1 : " + patronClone);
+            readyToSpawn = false;
+            return;
+        }
+    }
