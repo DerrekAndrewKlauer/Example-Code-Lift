@@ -1,5 +1,5 @@
 # Example-Code-Lift
-A series of code snippets focusing on my most recent work with Lift VR.
+A series of code snippets focusing on my most recent work with Lift VR. Lift is being developed in Unity 3D. Code shown is C#.
 
 Audio Length:
 Function called by playmaker FSM to play and determine the length of the currently spoken dialogue. The audio length is sent to the active FSM as a Playmaker Global.
